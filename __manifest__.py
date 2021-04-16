@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name' : 'Weather Forecast',
+    'name' : 'Addon Employee',
     'version' : '0.1',
-    'summary': 'Weather Forecast',
+    'summary': 'Addon Employee',
     'sequence': -10,
-    'description': """Weather Forecast""",
+    'description': """Addon Employee""",
     'category': 'Productivity',
     'website': 'https://www.abcxyz.com/',
     'license': 'LGPL-3',
