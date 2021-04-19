@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="menu_employee" model="website.menu">
+            <field name="name">Employees List</field>
+            <field name="url">/employee/employee</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">8</field>
+        </record>
+
+    <record id="menu_information" model="website.menu">
+            <field name="name">Employee Information</field>
+            <field name="url">/employee/employee/info</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">9</field>
+        </record>
+
+    <template id="employee_list" name="Employees List">
+        <title>Employees</title>
+        <t t-call="website.layout">
+            <div t-if="employees" class="employee_list">
+                <table class="tg table-bordered table-sm table-employees" align="center" id="table-employees" style="margin-top:100px; margin-bottom:25px">
+                    <tbody>
+                        <t t-foreach="employees_dict" t-as="i">
+                            <tr>
+                                <t t-foreach="employees_dict[i]" t-as="j">
+                                    <td style="width: 18vw">
+                                        <div style="display: flex;" class="employee"
+                                             t-attf-id="{{employees_dict[i][j].id}}">
+                                            <div style="flex: 50%;"><span t-field="employees_dict[i][j].image_1920"
+                                                                          t-options="{'widget': 'image', 'qweb_img_responsive': False}"/></div>
+                                            <div style="flex: 50%;">
+                                                <h4 style="color:#875A7B">
+                                                    <b><t t-esc="employees_dict[i][j].name"/></b>
+                                                </h4>
+                                                <br/>
+                                                <b>Department: </b><t t-esc="employees_dict[i][j].department_id.name"/>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+            <div class="products_pager form-inline flex-md-nowrap justify-content-between justify-content-md-center">
+                <t t-call="website.pager">
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <template id="employee_info" name="Employees Info">
+        <title>Employees Info</title>
+        <t t-call="website.layout">
+            <div t-if="employee">
+                <div align="center" style="width: 70vw; margin: 20px">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <span t-field="employee.image_1920"
+                                      t-options="{'widget': 'image', 'qweb_img_responsive': False, 'style': 'width: 200px'}"/>
+                            </div>
+                            <div class="col" align="left">
+                                <h1>
+                                    <b><t t-esc="employee.name"/></b>
+                                </h1>
+                                <br/>
+                                <h2 style="color:#807c74">
+                                    <t t-esc="employee.job_title"/>
+                                </h2>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" align="left">
+                            <div class="col"></div>
+                            <div class="col">
+
+                                <b>Department: </b><t t-esc="employee.department_id.name"/><br/>
+                                <b>Phone: </b><t t-esc="employee.mobile_phone"/><br/>
+                                <b>Email: </b><t t-esc="employee.work_email"/><br/>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div t-if="not employee" class="alert alert-info">
+                No record.
+            </div>
+        </t>
+    </template>
+
+    <template id="employee_info_alert" name="Employees Info">
+        <title>Employees Info</title>
+        <t t-call="website.layout">
+            <div class="alert alert-info">
+                Sorry, You don't have a permission.
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="addon_employee_assets_frontend" inherit_id="web.assets_frontend">
+        <xpath expr="script[last()]" position="after">
+            <script type="text/javascript" src="/addon_employee/static/src/js/init.js"></script>
+        </xpath>
+    </template>
+</odoo>

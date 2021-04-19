@@ -9,9 +9,10 @@
     'category': 'Productivity',
     'website': 'https://www.abcxyz.com/',
     'license': 'LGPL-3',
-    'depends': ['website', 'base', 'web'],
+    'depends': ['website', 'base', 'hr'],
     'data': [
-
+        'views/assets.xml',
+        'views/templates.xml',
     ],
     'demo': [],
     'qweb': [],
